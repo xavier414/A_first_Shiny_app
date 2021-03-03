@@ -12,11 +12,18 @@ library(tidyverse)
 library(Stat2Data)
 data("Backpack")
 attach(Backpack)
+Backpack$Year=as.factor(Backpack$Year)
+Backpack$Year
+Backpack$Year = factor(Backpack$Year,levels(Backpack$Year))
+
 
 
 list_choices <-  unique(Backpack$Year)
 list_choices <- list_choices[!is.na(list_choices)]
-names(list_choices) <- paste0(list_choices,"Year")
+
+names(list_choices) <- paste0(list_choices," Year")
+
+
 
 # Define UI for application that draws a histogram
 ui <- navbarPage("Shiny app",
@@ -31,8 +38,8 @@ ui <- navbarPage("Shiny app",
                                   plotOutput(outputId = "hello")
                               )
                               ))),
-                 tabPanel("References",
-                          includeMarkdown("references.md")
+                 tabPanel("Presentation",
+                          includeMarkdown("presentationlink.md")
                  ) #  titlePanel
 ) # navbarPage
 
